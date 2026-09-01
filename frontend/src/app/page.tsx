@@ -1,108 +1,155 @@
 'use client';
 
 import Link from 'next/link';
-import { Grid, Column, Tile, Tag } from '@carbon/react';
+import { Grid, Column, Tag } from '@carbon/react';
+import { ArrowRight, DataCenter, Cube, Terminal } from '@carbon/icons-react';
 import { quickCopyPath } from '@/data/knowledge-base';
 import { systems } from '@/data/systems';
 
-const architectureCards = [
-  { title: 'Dev Machine', text: 'Lenovo laptop for coding and AI tooling.' },
-  { title: 'AI Layer', text: 'LiteLLM with local and cloud model routing.' },
-  { title: 'Homelab Server', text: 'Proxmox host with isolated workloads.' },
-  { title: 'Execution Layer', text: 'Docker, VMs, and services running reproducible apps.' },
+const flowSteps = ['Idea', 'plan.md', 'AI tooling via LiteLLM', 'Docker container', 'Proxmox host'];
+
+const architecture = [
+  { icon: Terminal, title: 'Dev machine', text: 'Laptop for coding, AI CLI tools, and plan.md-first design work.' },
+  { icon: Cube, title: 'AI layer', text: 'LiteLLM routes requests across local and cloud models from one gateway.' },
+  { icon: DataCenter, title: 'Homelab server', text: 'Proxmox host running isolated LXC containers and Docker workloads.' },
 ];
+
+const [featured, ...rest] = systems;
 
 export default function HomePage() {
   return (
     <>
-      <section className="hero-glow" style={{ padding: '6rem 1.5rem 5rem' }}>
-        <div style={{ maxWidth: '56rem', margin: '0 auto' }}>
-          <span className="eyebrow">BuildWithShashank</span>
-          <h1
-            className="page-title"
-            style={{
-              fontSize: 'clamp(2.5rem, 6vw, 4rem)',
-              lineHeight: 1.08,
-              letterSpacing: '-0.03em',
-              maxWidth: '46rem',
-              marginBottom: '1.1rem',
-            }}
-          >
-            I design and ship AI-powered systems using my own infrastructure.
-          </h1>
-          <p
-            style={{
-              fontSize: '1.125rem',
-              lineHeight: 1.7,
-              color: '#525252',
-              maxWidth: '38rem',
-              margin: '0 0 0.6rem',
-            }}
-          >
-            Understand how it works. Build your own.
-          </p>
-          <p
-            style={{
-              fontSize: '1rem',
-              lineHeight: 1.7,
-              color: '#6f6f6f',
-              maxWidth: '38rem',
-              margin: 0,
-            }}
-          >
-            From idea → architecture → deployment — all in one system.
-          </p>
-          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '2rem' }}>
-            <Link href="/systems" className="btn-primary">Explore Systems</Link>
-            <Link href="/build-guide" className="btn-secondary">Build Your Own</Link>
+      <section className="hero-glow">
+        <div className="hero-inner">
+          <div className="hero-copy">
+            <span className="eyebrow">BuildWithShashank</span>
+            <h1
+              className="page-title"
+              style={{
+                fontSize: 'clamp(2.25rem, 5vw, 3.5rem)',
+                maxWidth: '30rem',
+                marginBottom: '1.1rem',
+                color: 'var(--on-graphite)',
+              }}
+            >
+              A homelab documented like a system, not a status page.
+            </h1>
+            <p style={{ fontSize: '1.0625rem', lineHeight: 1.7, maxWidth: '32rem', margin: '0 0 0.6rem' }}>
+              Real infrastructure, the reasoning behind it, and a path to build your own: Proxmox for isolation,
+              Docker for repeatable deploys, LiteLLM for model routing.
+            </p>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.7, maxWidth: '32rem', margin: 0, color: 'var(--on-graphite-soft)' }}>
+              Problem first, then the system, then how it actually runs.
+            </p>
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '2.25rem' }}>
+              <Link href="/systems" className="btn-primary">
+                Explore systems <ArrowRight size={16} />
+              </Link>
+              <Link href="/build-guide" className="btn-secondary">Build your own</Link>
+            </div>
+          </div>
+
+          <div className="hero-flow">
+            <p className="hero-flow-label">How code reaches the homelab</p>
+            <ol className="hero-flow-steps">
+              {flowSteps.map((step, i) => (
+                <li key={step}>
+                  <span className="n">{String(i + 1).padStart(2, '0')}</span>
+                  <span>{step}</span>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
 
       <Grid fullWidth className="page-grid">
         <Column sm={4} md={8} lg={16}>
-          <h2 className="section-heading" style={{ marginBottom: '0.4rem' }}>Systems I Built</h2>
-          <p className="page-subtitle" style={{ marginTop: 0 }}>Problem-first systems designed for speed, control, and repeatability.</p>
+          <span className="eyebrow">Systems I built</span>
+          <h2 className="page-title" style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>
+            Problem-first, not tool-first
+          </h2>
+          <p className="page-subtitle" style={{ marginTop: 0 }}>
+            Each system started as a real annoyance: slow app setup, cloud lock-in, fragmented files. Every page
+            walks through the problem, the build, the infrastructure it runs on, and what it actually cost.
+          </p>
         </Column>
-        {systems.slice(0, 4).map((s) => (
-          <Column key={s.slug} sm={4} md={4} lg={8}>
-            <Tile className="section-tile system-card" style={{ background: '#f8f9fb' }}>
-              <div>
-                <h3 className="section-heading">{s.title}</h3>
-                <p>{s.summary}</p>
-                <div className="tag-row">{s.tags.slice(0, 2).map((t) => <Tag key={t} type="blue">{t}</Tag>)}</div>
-              </div>
-              <Link href={`/systems/${s.slug}`} className="btn-secondary" style={{ width: 'fit-content' }}>View details</Link>
-            </Tile>
+
+        <Column sm={4} md={8} lg={9}>
+          <article className="systems-card systems-card--feature">
+            <div>
+              <span className="detail-label">Featured</span>
+              <h3 className="systems-card-title" style={{ marginTop: '0.5rem', fontSize: '1.35rem' }}>{featured.title}</h3>
+              <p className="systems-card-text" style={{ minHeight: 0 }}>{featured.problem}</p>
+              <div className="tag-row">{featured.tags.map((t) => <Tag key={t} type="warm-gray">{t}</Tag>)}</div>
+            </div>
+            <div className="systems-card-actions">
+              <span className="detail-label">{featured.tech.slice(0, 3).join(' · ')}</span>
+              <Link href={`/systems/${featured.slug}`} className="systems-card-link">View details →</Link>
+            </div>
+          </article>
+        </Column>
+
+        <Column sm={4} md={8} lg={7}>
+          <div className="stack" style={{ gap: 0 }}>
+            {rest.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/systems/${s.slug}`}
+                style={{
+                  display: 'block',
+                  padding: '1rem 0',
+                  borderBottom: '1px solid var(--line)',
+                  color: 'var(--ink)',
+                  textDecoration: 'none',
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
+                  <h3 className="systems-card-title" style={{ margin: 0, fontSize: '1rem' }}>{s.title}</h3>
+                  <ArrowRight size={16} style={{ flexShrink: 0, marginTop: '0.2rem' }} />
+                </div>
+                <p style={{ margin: '0.35rem 0 0', color: 'var(--ink-soft)', fontSize: '0.9rem' }}>{s.summary}</p>
+              </Link>
+            ))}
+          </div>
+        </Column>
+
+        <Column sm={4} md={8} lg={16}>
+          <span className="eyebrow">Architecture</span>
+          <h2 className="page-title" style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>How it runs</h2>
+          <p className="page-subtitle" style={{ marginTop: 0 }}>
+            An architecture pattern, not a live status feed - see <Link href="/homelab">the homelab page</Link> for
+            day-to-day usage.
+          </p>
+        </Column>
+        {architecture.map(({ icon: Icon, title, text }) => (
+          <Column key={title} sm={4} md={4} lg={5}>
+            <div className="section-tile" style={{ minHeight: 150 }}>
+              <Icon size={20} style={{ marginBottom: '0.75rem', color: 'var(--accent-hover)' }} />
+              <h3 className="section-heading" style={{ fontSize: '1rem' }}>{title}</h3>
+              <p style={{ margin: 0, color: 'var(--ink-soft)' }}>{text}</p>
+            </div>
           </Column>
         ))}
 
         <Column sm={4} md={8} lg={16}>
-          <h2 className="section-heading" style={{ marginBottom: '0.4rem' }}>Architecture</h2>
+          <span className="eyebrow">Start here</span>
+          <h2 className="page-title" style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>Build your own</h2>
+          <p className="page-subtitle" style={{ marginTop: 0 }}>The fast path if you want to start today.</p>
         </Column>
-        {architectureCards.map((card) => (
-          <Column key={card.title} sm={4} md={4} lg={4}>
-            <Tile className="section-tile" style={{ background: '#f8f9fb', minHeight: 150 }}>
-              <h3 className="section-heading">{card.title}</h3>
-              <p>{card.text}</p>
-            </Tile>
-          </Column>
-        ))}
-
         <Column sm={4} md={8} lg={16}>
-          <h2 className="section-heading" style={{ marginBottom: '0.4rem' }}>Quick Start</h2>
-          <p className="page-subtitle" style={{ marginTop: 0 }}>Fast path if you want to start immediately.</p>
+          <ol className="stack" style={{ gap: '0.6rem', fontFamily: "'IBM Plex Mono', monospace" }}>
+            {quickCopyPath.map((step, i) => (
+              <li key={step} style={{ display: 'flex', gap: '0.75rem', alignItems: 'baseline' }}>
+                <span className="detail-label" style={{ color: 'var(--accent-hover)' }}>{String(i + 1).padStart(2, '0')}</span>
+                <span>{step}</span>
+              </li>
+            ))}
+          </ol>
+          <Link href="/build-guide" className="btn-primary" style={{ marginTop: '1.5rem', display: 'inline-flex' }}>
+            Read the full build guide <ArrowRight size={16} />
+          </Link>
         </Column>
-        {quickCopyPath.map((step, i) => (
-          <Column key={step} sm={4} md={4} lg={8}>
-            <Tile className="section-tile" style={{ background: '#f8f9fb' }}>
-              <p style={{ margin: 0, fontSize: '0.75rem', color: '#6f6f6f', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                Step {i + 1}
-              </p>
-              <h3 className="section-heading" style={{ marginTop: '0.5rem' }}>{step}</h3>
-            </Tile>
-          </Column>
-        ))}
       </Grid>
     </>
   );

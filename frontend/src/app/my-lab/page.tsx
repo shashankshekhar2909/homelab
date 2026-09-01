@@ -1,22 +1,25 @@
 'use client';
 
 import { DataTable, Grid, Column, Table, TableBody, TableCell, TableHead, TableHeader, TableRow, Tile } from '@carbon/react';
-import { myLabTracker } from '@/data/knowledge-base';
+import { myLabChecklist } from '@/data/knowledge-base';
 
 export default function MyLabPage() {
   return (
     <Grid fullWidth className="page-grid">
       <Column sm={4} md={8} lg={16}>
-        <h1 className="page-title">My Lab Tracker</h1>
-        <p className="page-subtitle">Track installed services, status, and operational notes.</p>
+        <span className="eyebrow">Template</span>
+        <h1 className="page-title">My Lab Checklist</h1>
+        <p className="page-subtitle">
+          A copyable checklist mirroring the build guide, in the order it actually gets built. Track your own
+          progress against it; this is a template, not a record of anyone&apos;s live infrastructure.
+        </p>
       </Column>
       <Column sm={4} md={8} lg={16}>
         <Tile className="section-tile">
-          <DataTable rows={myLabTracker} headers={[
-            { key: 'service', header: 'Service' },
-            { key: 'ip', header: 'IP' },
-            { key: 'port', header: 'Port' },
-            { key: 'status', header: 'Status' },
+          <DataTable rows={myLabChecklist} headers={[
+            { key: 'item', header: 'Component' },
+            { key: 'category', header: 'Category' },
+            { key: 'note', header: 'Note' },
           ]}>
             {({ rows, headers, getHeaderProps, getRowProps }) => (
               <Table>

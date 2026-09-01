@@ -1,62 +1,44 @@
-export const homeIntro = {
-  title: 'Understand my homelab. Build your own.',
-  text: 'KnowMyLab is a static, safe learning platform that explains homelab architecture and how to replicate it step-by-step.',
-};
-
-export const architectureFlow = [
-  'User Laptop',
-  'Development Tools',
-  'AI Tools (Local + Cloud)',
-  'Homelab Server',
-  'Proxmox',
-  'Docker / VMs / LXCs',
-  'Services',
-];
-
 export const services = [
   {
     id: 'jellyfin',
     name: 'Jellyfin',
     category: 'Media',
-    description: 'Self-hosted media server for local streaming.',
-    runs_on: 'Docker container',
+    description: 'Self-hosted media server streaming from local storage.',
+    runs_on: 'Proxmox host',
     tech_stack: 'Docker, Jellyfin',
-    access_type: 'LAN only',
-    status: 'online',
+  },
+  {
+    id: 'immich',
+    name: 'Immich',
+    category: 'Photos',
+    description: 'Self-hosted photo backup and search, synced automatically from phone.',
+    runs_on: 'Proxmox host',
+    tech_stack: 'Docker, Immich',
   },
   {
     id: 'samba',
     name: 'Samba (SMB)',
     category: 'Storage',
-    description: 'File sharing across devices.',
-    runs_on: 'VM or container',
+    description: 'File sharing across laptop, phone, and other devices on the network.',
+    runs_on: 'Proxmox host',
     tech_stack: 'SMB',
-    access_type: 'LAN only',
-    status: 'online',
+  },
+  {
+    id: 'litellm',
+    name: 'LiteLLM',
+    category: 'AI',
+    description: 'Unified gateway that routes AI tooling to OpenAI, Anthropic, Groq, and other providers.',
+    runs_on: 'ASUS Linux node',
+    tech_stack: 'LiteLLM',
   },
   {
     id: 'ollama',
     name: 'Ollama',
     category: 'AI',
-    description: 'Local LLM runtime for private AI workflows.',
-    runs_on: 'LXC/VM',
+    description: 'Local LLM runtime for quick, private, offline-friendly tasks.',
+    runs_on: 'ASUS Linux node',
     tech_stack: 'Ollama',
-    access_type: 'LAN only',
-    status: 'online',
   },
-];
-
-export const buildSteps = [
-  'Hardware',
-  'Install Proxmox',
-  'Create VM or LXC',
-  'Install Docker',
-  'Add Storage',
-  'Install First Service',
-  'Add Networking',
-  'Add Remote Access',
-  'Add AI',
-  'Document Everything',
 ];
 
 export const templates = [
@@ -65,10 +47,15 @@ export const templates = [
   { id: 'ai', name: 'AI Lab', difficulty: 'intermediate', eta: '3-6 hours' },
 ];
 
-export const myLabTracker = [
-  { id: '1', service: 'Jellyfin', ip: '192.168.x.x', port: '8096', status: 'installed' },
-  { id: '2', service: 'Ollama', ip: '192.168.x.x', port: '11434', status: 'installed' },
-  { id: '3', service: 'Cloudflare Tunnel', ip: '192.168.x.x', port: '-', status: 'pending' },
+export const myLabChecklist = [
+  { id: '1', item: 'Host + Proxmox', category: 'Core', note: 'One machine, virtualization layer installed.' },
+  { id: '2', item: 'First LXC container', category: 'Core', note: 'Isolated environment for your first service.' },
+  { id: '3', item: 'Docker inside the container', category: 'Core', note: 'Consistent, repeatable app runtime.' },
+  { id: '4', item: 'Storage share (Samba)', category: 'Core', note: 'One place for files across devices.' },
+  { id: '5', item: 'First service (Jellyfin or similar)', category: 'Core', note: 'Validates the stack end to end.' },
+  { id: '6', item: 'Remote access (tunnel or VPN)', category: 'Optional', note: 'Outbound-only: Cloudflare Tunnel for public, Tailscale for private.' },
+  { id: '7', item: 'Local or gateway-routed AI', category: 'Optional', note: 'Ollama locally, LiteLLM if routing multiple providers.' },
+  { id: '8', item: 'Second node', category: 'Advanced', note: 'Split build/deploy and AI workloads across separate machines once one node feels crowded.' },
 ];
 
 export const quickCopyPath = [

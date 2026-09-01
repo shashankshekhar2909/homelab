@@ -1,6 +1,7 @@
 'use client';
 
 import { Column, Grid, Tile, CodeSnippet } from '@carbon/react';
+import { WarningAlt, Idea, Flash } from '@carbon/icons-react';
 import { CommandCopy } from '@/components/common/command-copy';
 
 type Step = {
@@ -43,7 +44,7 @@ const steps: Step[] = [
     title: 'Create Your First Container (LXC)',
     what: 'Creating a lightweight environment to run apps.',
     why: 'Containers are faster and simpler than full VMs for most starter workloads.',
-    steps: ['In Proxmox click Create CT', 'Select Ubuntu/Debian template', 'Set CPU to 2 cores, RAM to 2–4GB', 'Start the container'],
+    steps: ['In Proxmox click Create CT', 'Select Ubuntu/Debian template', 'Set CPU to 2 cores, RAM to 2-4GB', 'Start the container'],
     tip: 'Start with one container only.',
     warning: 'Creating too many containers early leads to operational confusion.',
     next: 'Install Docker inside this container.',
@@ -85,7 +86,7 @@ const steps: Step[] = [
     tip: 'Start simple; introduce abstraction gradually.',
     warning: 'Overengineering networking too early slows progress.',
     next: 'Add remote access safely.',
-    code: 'http://192.168.x.x:PORT',
+    code: 'http://YOUR_SERVER_IP:PORT',
   },
   {
     title: 'Add Remote Access (Safely)',
@@ -125,15 +126,18 @@ export default function BuildGuidePage() {
 
       <Column sm={4} md={8} lg={16} className="build-wrap">
         <div className="security-banner">
-          <strong>⚠️ Security First</strong>
-          <p>Never expose real IPs, passwords, API keys, or admin URLs. Use safe placeholders only.</p>
+          <WarningAlt size={20} className="banner-icon" aria-hidden="true" />
+          <div>
+            <strong>Security First</strong>
+            <p>Never expose real IPs, passwords, API keys, or admin URLs. Use safe placeholders only.</p>
+          </div>
         </div>
       </Column>
 
       <Column sm={4} md={8} lg={16} className="build-wrap">
         <div className="quick-card">
-          <h3>⚡ Quick Start</h3>
-          <ul>
+          <h3 className="icon-heading"><Flash size={20} aria-hidden="true" /> Quick Start</h3>
+          <ul className="clean-list">
             <li>Get a spare PC or mini server</li>
             <li>Install Proxmox</li>
             <li>Create one container</li>
@@ -157,35 +161,35 @@ export default function BuildGuidePage() {
                 {step.worksWell && (
                   <>
                     <p><strong>What works well:</strong></p>
-                    <ul>{step.worksWell.map((x) => <li key={x}>{x}</li>)}</ul>
+                    <ul className="clean-list">{step.worksWell.map((x) => <li key={x}>{x}</li>)}</ul>
                   </>
                 )}
 
                 {step.avoid && (
                   <>
                     <p><strong>What to avoid:</strong></p>
-                    <ul>{step.avoid.map((x) => <li key={x}>{x}</li>)}</ul>
+                    <ul className="clean-list">{step.avoid.map((x) => <li key={x}>{x}</li>)}</ul>
                   </>
                 )}
 
                 {step.options && (
                   <>
                     <p><strong>Options:</strong></p>
-                    <ul>{step.options.map((x) => <li key={x}>{x}</li>)}</ul>
+                    <ul className="clean-list">{step.options.map((x) => <li key={x}>{x}</li>)}</ul>
                   </>
                 )}
 
                 {step.startOptions && (
                   <>
                     <p><strong>Good starting options:</strong></p>
-                    <ul>{step.startOptions.map((x) => <li key={x}>{x}</li>)}</ul>
+                    <ul className="clean-list">{step.startOptions.map((x) => <li key={x}>{x}</li>)}</ul>
                   </>
                 )}
 
                 {step.steps && (
                   <>
                     <p><strong>Real steps:</strong></p>
-                    <ol>{step.steps.map((x) => <li key={x}>{x}</li>)}</ol>
+                    <ol className="clean-list">{step.steps.map((x) => <li key={x}>{x}</li>)}</ol>
                   </>
                 )}
 
@@ -196,8 +200,14 @@ export default function BuildGuidePage() {
                   </Tile>
                 )}
 
-                <div className="tip-box"><strong>💡 Tip:</strong> {step.tip}</div>
-                <div className="warn-box" style={{ marginTop: '0.6rem' }}><strong>⚠️ Common mistake:</strong> {step.warning}</div>
+                <div className="tip-box">
+                  <Idea size={16} className="box-icon" aria-hidden="true" />
+                  <p><strong>Tip:</strong> {step.tip}</p>
+                </div>
+                <div className="warn-box" style={{ marginTop: '0.6rem' }}>
+                  <WarningAlt size={16} className="box-icon" aria-hidden="true" />
+                  <p><strong>Common mistake:</strong> {step.warning}</p>
+                </div>
                 <p style={{ marginTop: '0.75rem' }}><strong>Next step:</strong> {step.next}</p>
               </div>
             </div>

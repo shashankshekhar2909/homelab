@@ -27,7 +27,7 @@ export default async function SystemDetailPage({ params }: { params: Promise<{ s
       <Column sm={4} md={8} lg={16}>
         <Tile className="section-tile">
           <h3 className="section-heading">Tech Stack</h3>
-          <div className="tag-row">{system.tech.map((x) => <Tag key={x} type="purple">{x}</Tag>)}</div>
+          <div className="tag-row">{system.tech.map((x) => <Tag key={x} type="gray">{x}</Tag>)}</div>
           <h3 className="section-heading">Notes</h3>
           <p>{system.notes}</p>
         </Tile>

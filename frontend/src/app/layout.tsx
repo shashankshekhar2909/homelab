@@ -4,42 +4,44 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import { AppShell } from '@/components/layout/app-shell';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://homelab.buildwithshashank.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'KnowMy Homelab',
+    default: 'KnowMy Homelab - Real systems, documented',
     template: '%s | KnowMy Homelab',
   },
-  description: 'AI-native system builder platform: architecture, workflows, and reproducible homelab systems.',
+  description:
+    'A working homelab documented like a system, not a status page: Proxmox, Docker, an LLM gateway, and the deployment discipline behind it, with a guide to build your own.',
   applicationName: 'KnowMy Homelab',
   keywords: [
     'homelab',
     'proxmox',
     'docker',
     'self-hosted',
+    'litellm',
     'ai workflow',
     'system design',
     'BuildWithShashank',
   ],
-  authors: [{ name: 'BuildWithShashank', url: 'https://buildwithshashank.com' }],
-  creator: 'BuildWithShashank',
-  publisher: 'BuildWithShashank',
+  authors: [{ name: 'Shashank Shekhar', url: 'https://buildwithshashank.com' }],
+  creator: 'Shashank Shekhar',
+  publisher: 'Shashank Shekhar',
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     url: siteUrl,
-    title: 'KnowMy Homelab',
-    description: 'Understand real homelab systems and build your own with clear architecture and practical guides.',
+    title: 'KnowMy Homelab - Real systems, documented',
+    description: 'A working homelab documented like a system: architecture, decisions, and a path to build your own.',
     siteName: 'KnowMy Homelab',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'KnowMy Homelab',
-    description: 'AI-native system builder platform for homelab architecture and execution.',
+    title: 'KnowMy Homelab - Real systems, documented',
+    description: 'A working homelab documented like a system: architecture, decisions, and a path to build your own.',
   },
   robots: {
     index: true,

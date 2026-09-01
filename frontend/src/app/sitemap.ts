@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
+import { systems } from '@/data/systems';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://homelab.buildwithshashank.com';
 
 const routes = [
   '/',
@@ -15,6 +16,7 @@ const routes = [
   '/services',
   '/templates',
   '/my-lab',
+  ...systems.map((s) => `/systems/${s.slug}`),
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

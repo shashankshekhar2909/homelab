@@ -15,7 +15,7 @@ export default function TemplatesPage() {
           <Tile className="section-tile">
             <h3 className="section-heading">{t.name}</h3>
             <p>Estimated time: {t.eta}</p>
-            <div className="tag-row"><Tag type="teal">{t.difficulty}</Tag></div>
+            <div className="tag-row"><Tag type="warm-gray">{t.difficulty}</Tag></div>
           </Tile>
         </Column>
       ))}

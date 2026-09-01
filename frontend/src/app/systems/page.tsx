@@ -18,7 +18,7 @@ export default function SystemsPage() {
             <div>
               <h3 className="systems-card-title">{s.title}</h3>
               <p className="systems-card-text">{s.summary}</p>
-              <div className="tag-row">{s.tags.map((t) => <Tag key={t} type="blue">{t}</Tag>)}</div>
+              <div className="tag-row">{s.tags.map((t) => <Tag key={t} type="warm-gray">{t}</Tag>)}</div>
             </div>
 
             <div className="systems-card-actions">

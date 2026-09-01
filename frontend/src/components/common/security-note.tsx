@@ -7,7 +7,7 @@ export function SecurityNote() {
       lowContrast
       hideCloseButton
       title="Security First"
-      subtitle="This guide uses safe placeholders. Never publish real IPs, tokens, passwords, tunnel IDs, or admin URLs."
+      subtitle="This guide uses safe placeholders. Never publish real IPs, hostnames, ports, tokens, passwords, tunnel IDs, or admin URLs."
     />
   );
 }

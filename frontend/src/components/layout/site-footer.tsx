@@ -1,17 +1,21 @@
 import Link from 'next/link';
+import { ArrowUpRight, LogoGithub, LogoLinkedin } from '@carbon/icons-react';
 
 const navLinks = [
   { href: '/systems', label: 'Systems' },
+  { href: '/services', label: 'Services' },
   { href: '/ai-workflow', label: 'AI Workflow' },
   { href: '/build-guide', label: 'Build Guide' },
+  { href: '/templates', label: 'Templates' },
+  { href: '/my-lab', label: 'My Lab Checklist' },
   { href: '/how-i-build-fast', label: 'Ship Fast' },
 ];
 
 const socials = [
-  { label: 'Website', href: 'https://buildwithshashank.com/' },
-  { label: 'GitHub', href: 'https://github.com/shashankshekhar2909' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/shashankshekhar2k15' },
-  { label: 'X / Twitter', href: 'https://x.com/shekharbuilds' },
+  { label: 'Website', href: 'https://buildwithshashank.com/', icon: ArrowUpRight },
+  { label: 'GitHub', href: 'https://github.com/shashankshekhar2909', icon: LogoGithub },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/shashankshekhar2k15', icon: LogoLinkedin },
+  { label: 'X / Twitter', href: 'https://x.com/shekharbuilds', icon: ArrowUpRight },
 ];
 
 export function SiteFooter() {
@@ -51,8 +55,15 @@ export function SiteFooter() {
             <ul className="site-footer-list">
               {socials.map((social) => (
                 <li key={social.label}>
-                  <Link href={social.href} target="_blank" rel="noopener noreferrer" className="site-footer-link">
+                  <Link
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="site-footer-link"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
+                  >
                     {social.label}
+                    <social.icon size={14} />
                   </Link>
                 </li>
               ))}

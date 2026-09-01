@@ -26,7 +26,7 @@ export default function ShipFastPage() {
       ))}
 
       <Column sm={4} md={8} lg={16}><Tile className="section-tile"><h3 className="section-heading">Workflow</h3><ol className="stack">{workflow.map((w) => <li key={w}>{w}</li>)}</ol></Tile></Column>
-      <Column sm={4} md={8} lg={16}><Tile className="section-tile"><h3 className="section-heading">Result</h3><div className="tag-row"><Tag type="green">Faster iteration</Tag><Tag type="blue">Lower cost</Tag><Tag type="purple">Higher control</Tag></div></Tile></Column>
+      <Column sm={4} md={8} lg={16}><Tile className="section-tile"><h3 className="section-heading">Result</h3><div className="tag-row"><Tag type="gray">Faster iteration</Tag><Tag type="gray">Lower cost</Tag><Tag type="gray">Higher control</Tag></div></Tile></Column>
     </Grid>
   );
 }
