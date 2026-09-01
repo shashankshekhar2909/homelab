@@ -20,3 +20,6 @@ backend/data/
 Thumbs.db
 .vscode/
 .idea/
+
+# Generated BuildOS knowledge artifacts
+buildos.okf.md
