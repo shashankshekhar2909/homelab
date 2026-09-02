@@ -25,7 +25,7 @@ export default function AiWorkflowPage() {
         <Column key={m.title} sm={4} md={4} lg={8}>
           <Tile className="section-tile" style={{ minHeight: 150 }}>
             <h3 className="section-heading" style={{ fontSize: '1rem' }}>{m.title}</h3>
-            <p style={{ margin: 0, color: 'var(--ink-soft)' }}>{m.text}</p>
+            <p style={{ margin: 0, color: 'var(--muted)' }}>{m.text}</p>
           </Tile>
         </Column>
       ))}

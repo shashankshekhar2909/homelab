@@ -29,7 +29,7 @@ export default function HomePage() {
                 fontSize: 'clamp(2.25rem, 5vw, 3.5rem)',
                 maxWidth: '30rem',
                 marginBottom: '1.1rem',
-                color: 'var(--on-graphite)',
+                color: 'var(--text)',
               }}
             >
               A homelab documented like a system, not a status page.
@@ -38,7 +38,7 @@ export default function HomePage() {
               Real infrastructure, the reasoning behind it, and a path to build your own: Proxmox for isolation,
               Docker for repeatable deploys, LiteLLM for model routing.
             </p>
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.7, maxWidth: '32rem', margin: 0, color: 'var(--on-graphite-soft)' }}>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.7, maxWidth: '32rem', margin: 0, color: 'var(--muted)' }}>
               Problem first, then the system, then how it actually runs.
             </p>
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '2.25rem' }}>
@@ -51,7 +51,7 @@ export default function HomePage() {
 
           <div className="hero-flow">
             <p className="hero-flow-label">How code reaches the homelab</p>
-            <ol className="hero-flow-steps">
+            <ol className="flow-chain">
               {flowSteps.map((step, i) => (
                 <li key={step}>
                   <span className="n">{String(i + 1).padStart(2, '0')}</span>
@@ -99,8 +99,8 @@ export default function HomePage() {
                 style={{
                   display: 'block',
                   padding: '1rem 0',
-                  borderBottom: '1px solid var(--line)',
-                  color: 'var(--ink)',
+                  borderBottom: '1px solid var(--hairline)',
+                  color: 'var(--text)',
                   textDecoration: 'none',
                 }}
               >
@@ -108,7 +108,7 @@ export default function HomePage() {
                   <h3 className="systems-card-title" style={{ margin: 0, fontSize: '1rem' }}>{s.title}</h3>
                   <ArrowRight size={16} style={{ flexShrink: 0, marginTop: '0.2rem' }} />
                 </div>
-                <p style={{ margin: '0.35rem 0 0', color: 'var(--ink-soft)', fontSize: '0.9rem' }}>{s.summary}</p>
+                <p style={{ margin: '0.35rem 0 0', color: 'var(--muted)', fontSize: '0.9rem' }}>{s.summary}</p>
               </Link>
             ))}
           </div>
@@ -122,12 +122,12 @@ export default function HomePage() {
             day-to-day usage.
           </p>
         </Column>
-        {architecture.map(({ icon: Icon, title, text }) => (
-          <Column key={title} sm={4} md={4} lg={5}>
+        {architecture.map(({ icon: Icon, title, text }, i) => (
+          <Column key={title} sm={4} md={4} lg={i === 0 ? 6 : 5}>
             <div className="section-tile" style={{ minHeight: 150 }}>
-              <Icon size={20} style={{ marginBottom: '0.75rem', color: 'var(--accent-hover)' }} />
+              <Icon size={20} style={{ marginBottom: '0.75rem', color: 'var(--accent)' }} />
               <h3 className="section-heading" style={{ fontSize: '1rem' }}>{title}</h3>
-              <p style={{ margin: 0, color: 'var(--ink-soft)' }}>{text}</p>
+              <p style={{ margin: 0, color: 'var(--muted)' }}>{text}</p>
             </div>
           </Column>
         ))}
@@ -141,7 +141,7 @@ export default function HomePage() {
           <ol className="stack" style={{ gap: '0.6rem', fontFamily: "'IBM Plex Mono', monospace" }}>
             {quickCopyPath.map((step, i) => (
               <li key={step} style={{ display: 'flex', gap: '0.75rem', alignItems: 'baseline' }}>
-                <span className="detail-label" style={{ color: 'var(--accent-hover)' }}>{String(i + 1).padStart(2, '0')}</span>
+                <span className="detail-label" style={{ color: 'var(--accent)' }}>{String(i + 1).padStart(2, '0')}</span>
                 <span>{step}</span>
               </li>
             ))}

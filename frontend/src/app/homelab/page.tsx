@@ -1,7 +1,32 @@
 'use client';
 
-import { Column, Grid, Tile, Tag } from '@carbon/react';
+import { Fragment } from 'react';
+import { Column, Grid, Tile } from '@carbon/react';
+import { ArrowDown } from '@carbon/icons-react';
 import { SecurityNote } from '@/components/common/security-note';
+
+const flow = [
+  {
+    label: 'Build',
+    title: 'Lenovo node',
+    text: 'Primary machine for coding and shipping. Where changes originate.',
+  },
+  {
+    label: 'Model routing',
+    title: 'LiteLLM gateway',
+    text: 'Routes AI tooling across local and cloud models from one place. Runs on the ASUS node.',
+  },
+  {
+    label: 'Runtime',
+    title: 'Proxmox + Docker nodes',
+    text: 'Isolated LXC containers and Docker workloads across the home and edge nodes.',
+  },
+  {
+    label: 'Ingress',
+    title: 'Private + public access',
+    text: 'Tailscale for private reach, Cloudflare Tunnel for anything public. No open inbound ports.',
+  },
+];
 
 const nodes = [
   {
@@ -40,17 +65,39 @@ export default function HomelabPage() {
       <Column sm={4} md={8} lg={16}><SecurityNote /></Column>
 
       <Column sm={4} md={8} lg={16}>
+        <h2 className="section-heading" style={{ fontSize: '1.1rem' }}>How a change reaches the homelab</h2>
+        <div className="arch-flow">
+          {flow.map((stage, i) => (
+            <Fragment key={stage.title}>
+              <div className="arch-stage">
+                <p className="arch-stage-label">{stage.label}</p>
+                <h3 className="arch-stage-title">{stage.title}</h3>
+                <p className="arch-stage-text">{stage.text}</p>
+              </div>
+              {i < flow.length - 1 && (
+                <div className="arch-connector" aria-hidden="true">
+                  <ArrowDown size={20} />
+                </div>
+              )}
+            </Fragment>
+          ))}
+        </div>
+      </Column>
+
+      <Column sm={4} md={8} lg={16}>
         <h2 className="section-heading" style={{ fontSize: '1.1rem' }}>Nodes</h2>
       </Column>
-      {nodes.map((n) => (
-        <Column key={n.name} sm={4} md={4} lg={4}>
-          <Tile className="section-tile" style={{ minHeight: 170 }}>
-            <span className="detail-label">{n.role}</span>
-            <h3 className="section-heading" style={{ marginTop: '0.4rem', fontSize: '1rem' }}>{n.name}</h3>
-            <p style={{ margin: 0, color: 'var(--ink-soft)' }}>{n.text}</p>
-          </Tile>
-        </Column>
-      ))}
+      <Column sm={4} md={8} lg={16}>
+        <div className="node-grid">
+          {nodes.map((n) => (
+            <Tile className="section-tile node-card" key={n.name}>
+              <span className="detail-label">{n.role}</span>
+              <h3 className="section-heading" style={{ marginTop: '0.4rem', fontSize: '1rem' }}>{n.name}</h3>
+              <p style={{ margin: 0, color: 'var(--muted)' }}>{n.text}</p>
+            </Tile>
+          ))}
+        </div>
+      </Column>
 
       <Column sm={4} md={8} lg={8}>
         <Tile className="section-tile" style={{ minHeight: 160 }}>
@@ -70,30 +117,30 @@ export default function HomelabPage() {
         <p className="page-subtitle" style={{ marginTop: 0 }}>Runtime and data layer shared across nodes.</p>
       </Column>
       <Column sm={4} md={8} lg={16}>
-        <Tile className="section-tile">
-          <div className="tag-row">
-            <Tag type="warm-gray">Docker Compose</Tag>
-            <Tag type="warm-gray">PostgreSQL / pgvector</Tag>
-            <Tag type="warm-gray">Redis</Tag>
-            <Tag type="warm-gray">Object storage</Tag>
-            <Tag type="gray">LiteLLM / model gateways</Tag>
-            <Tag type="gray">BuildOS</Tag>
-            <Tag type="gray">Node Commander</Tag>
-            <Tag type="gray">Knowledge Hub</Tag>
-            <Tag type="warm-gray">Monitoring</Tag>
-            <Tag type="warm-gray">Portainer</Tag>
+        <div className="platform-band">
+          <div className="chip-row">
+            <span className="chip">Docker Compose</span>
+            <span className="chip">PostgreSQL / pgvector</span>
+            <span className="chip">Redis</span>
+            <span className="chip">Object storage</span>
+            <span className="chip chip--accent">LiteLLM / model gateways</span>
+            <span className="chip chip--accent">BuildOS</span>
+            <span className="chip chip--accent">Node Commander</span>
+            <span className="chip chip--accent">Knowledge Hub</span>
+            <span className="chip">Monitoring</span>
+            <span className="chip">Portainer</span>
           </div>
-        </Tile>
+        </div>
       </Column>
 
       <Column sm={4} md={4} lg={5}>
-        <Tile className="section-tile"><h3 className="section-heading">Storage & files</h3><p>Samba share for consistent file access across laptop, phone, and other devices.</p></Tile>
+        <Tile className="section-tile"><h3 className="section-heading">Storage &amp; files</h3><p>Samba share for consistent file access across laptop, phone, and other devices.</p></Tile>
       </Column>
       <Column sm={4} md={4} lg={5}>
-        <Tile className="section-tile"><h3 className="section-heading">Media & photos</h3><p>Jellyfin for streaming, Immich for private photo backup from phone.</p></Tile>
+        <Tile className="section-tile"><h3 className="section-heading">Media &amp; photos</h3><p>Jellyfin for streaming, Immich for private photo backup from phone.</p></Tile>
       </Column>
       <Column sm={4} md={4} lg={6}>
-        <Tile className="section-tile"><h3 className="section-heading">AI & development</h3><p>Ollama for local models, LiteLLM as the gateway for cloud providers, BuildOS for project context.</p></Tile>
+        <Tile className="section-tile"><h3 className="section-heading">AI &amp; development</h3><p>Ollama for local models, LiteLLM as the gateway for cloud providers, BuildOS for project context.</p></Tile>
       </Column>
 
       <Column sm={4} md={8} lg={16}>
