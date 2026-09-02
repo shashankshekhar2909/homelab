@@ -23,15 +23,7 @@ export default function HomePage() {
         <div className="hero-inner">
           <div className="hero-copy">
             <span className="eyebrow">BuildWithShashank</span>
-            <h1
-              className="page-title"
-              style={{
-                fontSize: 'clamp(2.25rem, 5vw, 3.5rem)',
-                maxWidth: '30rem',
-                marginBottom: '1.1rem',
-                color: 'var(--text)',
-              }}
-            >
+            <h1 className="page-title" style={{ marginBottom: '1.1rem' }}>
               A homelab documented like a system, not a status page.
             </h1>
             <p style={{ fontSize: '1.0625rem', lineHeight: 1.7, maxWidth: '32rem', margin: '0 0 0.6rem' }}>
@@ -65,7 +57,6 @@ export default function HomePage() {
 
       <Grid fullWidth className="page-grid">
         <Column sm={4} md={8} lg={16}>
-          <span className="eyebrow">Systems I built</span>
           <h2 className="page-title" style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>
             Problem-first, not tool-first
           </h2>
@@ -115,7 +106,6 @@ export default function HomePage() {
         </Column>
 
         <Column sm={4} md={8} lg={16}>
-          <span className="eyebrow">Architecture</span>
           <h2 className="page-title" style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>How it runs</h2>
           <p className="page-subtitle" style={{ marginTop: 0 }}>
             An architecture pattern, not a live status feed - see <Link href="/homelab">the homelab page</Link> for
@@ -133,12 +123,11 @@ export default function HomePage() {
         ))}
 
         <Column sm={4} md={8} lg={16}>
-          <span className="eyebrow">Start here</span>
           <h2 className="page-title" style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>Build your own</h2>
           <p className="page-subtitle" style={{ marginTop: 0 }}>The fast path if you want to start today.</p>
         </Column>
         <Column sm={4} md={8} lg={16}>
-          <ol className="stack" style={{ gap: '0.6rem', fontFamily: "'IBM Plex Mono', monospace" }}>
+          <ol className="stack" style={{ gap: '0.6rem' }}>
             {quickCopyPath.map((step, i) => (
               <li key={step} style={{ display: 'flex', gap: '0.75rem', alignItems: 'baseline' }}>
                 <span className="detail-label" style={{ color: 'var(--accent)' }}>{String(i + 1).padStart(2, '0')}</span>

@@ -1,25 +1,36 @@
 /* ==========================================================================
-   KnowMy Homelab - design tokens (V2)
-   Dark-only modern infrastructure: deep navy/graphite, near-white text,
-   one restrained electric teal accent. Built on Carbon's --cds-* tokens.
+   KnowMy Homelab - design tokens
+   Light, crisp, editorial technical identity matched to the live
+   BuildWithShashank site: stone body, white cards, near-black text,
+   graphite secondary text, single emerald accent. Built on Carbon's
+   --cds-* tokens. One black terminal panel used selectively as contrast.
    ========================================================================== */
 
 :root {
   /* palette */
-  --bg: #07111f;
-  --elevated: #0d1b2a;
-  --panel: #112235;
-  --panel-hover: #152a40;
-  --text: #f4f8fb;
-  --muted: #9aaec0;
-  --subtle: #688097;
-  --accent: #22d3c5;
-  --accent-strong: #57e2d6;
-  --accent-ink: #06211f;
-  --hairline: rgba(148, 180, 203, 0.18);
-  --hairline-strong: rgba(148, 180, 203, 0.32);
-  --danger: #f0836a;
-  --focus-ring: #4be8da;
+  --bg: #f8f8fa;
+  --surface: #ffffff;
+  --surface-hover: #fafafa;
+  --text: #09090b;
+  --muted: #4b5563;
+  --subtle: #71717a;
+  --border: #e4e4e7;
+  --border-strong: #d4d4d8;
+  --accent: #059669;
+  --accent-strong: #047857;
+  --accent-dim: rgba(5, 150, 105, 0.1);
+  --accent-ink: #09090b;
+  --hairline: var(--border);
+  --hairline-strong: var(--border-strong);
+  --danger: #dc2626;
+  --focus-ring: #059669;
+
+  /* one selective dark terminal/diagram surface */
+  --ink-bg: #09090b;
+  --ink-border: #27272a;
+  --ink-text: #e4e4e7;
+  --ink-muted: #a1a1aa;
+  --ink-accent: #34d399;
 
   /* rhythm */
   --page-max: 1200px;
@@ -30,87 +41,89 @@
   --space-5: 4rem;
   --radius: 14px;
   --radius-sm: 8px;
+  --ring-card: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  --shadow-elevated: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px -16px rgba(0, 0, 0, 0.14);
 
   /* Carbon token overrides */
   --cds-background: var(--bg);
-  --cds-background-hover: var(--panel-hover);
-  --cds-background-active: var(--panel-hover);
-  --cds-background-selected: var(--panel-hover);
-  --cds-background-selected-hover: var(--panel-hover);
+  --cds-background-hover: var(--surface-hover);
+  --cds-background-active: var(--border);
+  --cds-background-selected: var(--surface-hover);
+  --cds-background-selected-hover: var(--surface-hover);
   --cds-background-brand: var(--accent);
   --cds-background-inverse: var(--text);
-  --cds-background-inverse-hover: #d8e3ec;
+  --cds-background-inverse-hover: #27272a;
 
-  --cds-layer: var(--panel);
-  --cds-layer-01: var(--panel);
-  --cds-layer-02: var(--elevated);
-  --cds-layer-hover-01: var(--panel-hover);
-  --cds-layer-hover-02: var(--panel-hover);
-  --cds-layer-active-01: var(--panel-hover);
-  --cds-layer-selected-01: var(--panel-hover);
-  --cds-layer-accent-01: var(--panel-hover);
+  --cds-layer: var(--surface);
+  --cds-layer-01: var(--surface);
+  --cds-layer-02: var(--bg);
+  --cds-layer-hover-01: var(--surface-hover);
+  --cds-layer-hover-02: var(--surface-hover);
+  --cds-layer-active-01: var(--border);
+  --cds-layer-selected-01: var(--surface-hover);
+  --cds-layer-accent-01: var(--surface-hover);
 
-  --cds-field: var(--panel);
-  --cds-field-01: var(--panel);
-  --cds-field-02: var(--elevated);
+  --cds-field: var(--surface);
+  --cds-field-01: var(--surface);
+  --cds-field-02: var(--bg);
 
-  --cds-border-subtle: var(--hairline);
-  --cds-border-subtle-00: var(--hairline);
-  --cds-border-subtle-01: var(--hairline);
-  --cds-border-subtle-02: var(--hairline);
-  --cds-border-subtle-03: var(--hairline);
-  --cds-border-strong: var(--hairline-strong);
-  --cds-border-strong-01: var(--hairline-strong);
-  --cds-border-strong-02: var(--hairline-strong);
-  --cds-border-strong-03: var(--hairline-strong);
+  --cds-border-subtle: var(--border);
+  --cds-border-subtle-00: var(--border);
+  --cds-border-subtle-01: var(--border);
+  --cds-border-subtle-02: var(--border);
+  --cds-border-subtle-03: var(--border);
+  --cds-border-strong: var(--border-strong);
+  --cds-border-strong-01: var(--border-strong);
+  --cds-border-strong-02: var(--border-strong);
+  --cds-border-strong-03: var(--border-strong);
   --cds-border-interactive: var(--accent);
-  --cds-border-tile: var(--hairline);
-  --cds-border-tile-01: var(--hairline);
-  --cds-border-tile-02: var(--hairline);
+  --cds-border-tile: var(--border);
+  --cds-border-tile-01: var(--border);
+  --cds-border-tile-02: var(--border);
 
   --cds-text-primary: var(--text);
   --cds-text-secondary: var(--muted);
   --cds-text-placeholder: var(--subtle);
   --cds-text-helper: var(--subtle);
-  --cds-text-on-color: var(--accent-ink);
-  --cds-text-inverse: var(--bg);
+  --cds-text-on-color: #ffffff;
+  --cds-text-inverse: #ffffff;
   --cds-text-disabled: var(--subtle);
 
   --cds-link-primary: var(--accent);
   --cds-link-primary-hover: var(--accent-strong);
   --cds-link-visited: var(--accent);
-  --cds-link-inverse: var(--accent-ink);
+  --cds-link-inverse: var(--accent-dim);
 
   --cds-icon-primary: var(--text);
   --cds-icon-secondary: var(--muted);
   --cds-icon-interactive: var(--text);
-  --cds-icon-on-color: var(--accent-ink);
+  --cds-icon-on-color: #ffffff;
 
   --cds-interactive: var(--accent);
-  --cds-highlight: var(--panel-hover);
+  --cds-highlight: var(--accent-dim);
 
   --cds-button-primary: var(--accent);
   --cds-button-primary-hover: var(--accent-strong);
   --cds-button-primary-active: var(--accent-strong);
-  --cds-button-secondary: var(--panel-hover);
-  --cds-button-secondary-hover: var(--hairline-strong);
-  --cds-button-tertiary: var(--text);
+  --cds-button-secondary: var(--text);
+  --cds-button-secondary-hover: #27272a;
+  --cds-button-tertiary: var(--accent);
   --cds-button-tertiary-hover: var(--accent-strong);
-  --cds-button-tertiary-active: var(--accent);
+  --cds-button-tertiary-active: var(--accent-strong);
 
   --cds-focus: var(--focus-ring);
-  --cds-focus-inset: var(--bg);
-  --cds-focus-inverse: var(--accent-ink);
+  --cds-focus-inset: var(--text);
+  --cds-focus-inverse: #ffffff;
 
-  --cds-tag-background-warm-gray: var(--panel-hover);
+  --cds-tag-background-warm-gray: var(--bg);
   --cds-tag-color-warm-gray: var(--muted);
-  --cds-tag-border-warm-gray: var(--hairline-strong);
-  --cds-tag-hover-warm-gray: var(--panel);
+  --cds-tag-border-warm-gray: var(--border-strong);
+  --cds-tag-hover-warm-gray: var(--surface-hover);
 
-  --cds-tag-background-gray: rgba(34, 211, 197, 0.12);
+  --cds-tag-background-gray: var(--accent-dim);
   --cds-tag-color-gray: var(--accent-strong);
-  --cds-tag-border-gray: rgba(34, 211, 197, 0.35);
-  --cds-tag-hover-gray: rgba(34, 211, 197, 0.2);
+  --cds-tag-border-gray: rgba(5, 150, 105, 0.3);
+  --cds-tag-hover-gray: rgba(5, 150, 105, 0.16);
 }
 
 * {
@@ -127,8 +140,16 @@ body {
 
 body {
   position: relative;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -162,24 +183,41 @@ input:focus-visible,
 .cds--link:focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(75, 232, 218, 0.25);
+  box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.2);
 }
 
 /* ---------- header / responsive nav ----------
-   Single, deliberate breakpoint at 1024px: full nav shows at/above it,
+   Single, deliberate breakpoint at 1100px: full nav shows at/above it,
    the accessible toggle + side nav own everything below it. Never both. */
 
 .cds--header {
   position: sticky;
   top: 0;
   z-index: 8000;
-  border-bottom: 1px solid var(--hairline);
-  background: var(--elevated);
+  display: flex;
+  align-items: center;
+  min-height: 61px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
 }
 
 .cds--header__name {
-  font-family: 'IBM Plex Mono', monospace;
+  min-height: 61px;
+  font-family: inherit;
+  font-weight: 700;
   letter-spacing: -0.01em;
+  color: var(--text) !important;
+}
+
+.cds--header__name::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 0.5rem;
+  border-radius: 2px;
+  background: var(--accent);
+  vertical-align: middle;
 }
 
 .cds--header__menu-toggle {
@@ -187,7 +225,7 @@ input:focus-visible,
   min-height: 44px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1100px) {
   .cds--header__menu-toggle {
     display: none !important;
   }
@@ -196,18 +234,39 @@ input:focus-visible,
   }
 }
 
-@media (max-width: 1023.98px) {
+@media (max-width: 1099.98px) {
+  .cds--header {
+    min-height: 65px;
+  }
+  .cds--header__name {
+    min-height: 65px;
+  }
   .cds--header__menu-toggle {
     display: flex !important;
   }
   .cds--header__nav {
     display: none !important;
   }
+}
+
+.cds--header__menu-bar {
+  height: 100%;
+}
+
+.cds--header__menu-item {
+  min-height: 61px;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.cds--header__menu-item:hover {
+  color: var(--text);
 }
 
 .cds--header__menu-item[aria-current='page'],
 .cds--header__menu-item.cds--header__menu-item--current {
   position: relative;
+  color: var(--text);
 }
 
 .cds--header__menu-item[aria-current='page']::after {
@@ -220,18 +279,24 @@ input:focus-visible,
   background: var(--accent);
 }
 
+.cds--side-nav {
+  background: var(--surface);
+}
+
 .cds--side-nav__link {
   min-height: 44px;
   display: flex;
   align-items: center;
+  color: var(--text);
 }
 
 .cds--side-nav__link[aria-current='page'] {
   border-left: 3px solid var(--accent);
+  color: var(--accent-strong);
 }
 
 .app-content {
-  min-height: calc(100vh - 3rem - 220px);
+  min-height: calc(100vh - 3rem - 160px);
 }
 
 main {
@@ -249,7 +314,7 @@ main {
 .page-grid {
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: var(--space-4) 1.5rem var(--space-5);
+  padding: 4rem 1.25rem 5rem;
   gap: var(--space-3);
 }
 
@@ -258,16 +323,31 @@ main {
   min-width: 0;
 }
 
+@media (min-width: 768px) {
+  .page-grid {
+    padding: 5rem 2.5rem 6rem;
+  }
+}
+
 .page-title {
   margin: 0;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  font-weight: 600;
+  font-size: 2.25rem;
+  line-height: 2.25rem;
+  letter-spacing: -0.9px;
+  font-weight: 800;
   color: var(--text);
 }
 
+@media (min-width: 768px) {
+  .page-title {
+    font-size: 3.75rem;
+    line-height: 3.75rem;
+    letter-spacing: -1.5px;
+  }
+}
+
 .page-subtitle {
-  margin-top: var(--space-1);
+  margin-top: var(--space-2);
   color: var(--muted);
   max-width: 62ch;
   line-height: 1.65;
@@ -279,12 +359,11 @@ main {
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 1rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 500;
+  color: var(--accent-strong);
+  font-weight: 600;
 }
 
 .eyebrow::before {
@@ -298,9 +377,9 @@ main {
 
 .hero-glow {
   position: relative;
-  background: var(--elevated);
+  background: var(--bg);
   color: var(--text);
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--border);
   overflow: hidden;
 }
 
@@ -311,7 +390,7 @@ main {
   top: -30%;
   width: 42rem;
   height: 42rem;
-  background: radial-gradient(circle, rgba(34, 211, 197, 0.12), transparent 65%);
+  background: radial-gradient(circle, rgba(5, 150, 105, 0.07), transparent 65%);
   pointer-events: none;
 }
 
@@ -320,12 +399,18 @@ main {
   z-index: 1;
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: 5rem 1.5rem 4rem;
+  padding: 5rem 1.25rem 4rem;
   display: grid;
   grid-template-columns: 7fr 5fr;
   gap: var(--space-4);
   align-items: center;
   min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .hero-inner {
+    padding: 7rem 2.5rem 6rem;
+  }
 }
 
 .hero-copy {
@@ -336,22 +421,23 @@ main {
   color: var(--muted);
 }
 
-/* ---------- flow diagram (semantic node chain) ---------- */
+/* ---------- terminal panel (single selective dark surface) ---------- */
 
 .hero-flow {
   min-width: 0;
-  border: 1px solid var(--hairline);
-  background: var(--panel);
+  border: 1px solid var(--ink-border);
+  background: var(--ink-bg);
   border-radius: var(--radius);
   padding: var(--space-3);
+  box-shadow: var(--shadow-elevated);
 }
 
 .hero-flow-label {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--subtle);
+  color: var(--ink-muted);
   margin: 0 0 1rem;
 }
 
@@ -369,9 +455,9 @@ main {
   align-items: center;
   gap: 0.75rem;
   padding: 0.55rem 0;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.8125rem;
-  color: var(--text);
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.875rem;
+  color: var(--ink-text);
 }
 
 .flow-chain li:not(:last-child)::after {
@@ -381,7 +467,7 @@ main {
   top: 100%;
   width: 1px;
   height: 0.5rem;
-  background: var(--hairline-strong);
+  background: var(--ink-border);
 }
 
 .flow-chain .n {
@@ -392,8 +478,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(34, 211, 197, 0.14);
-  color: var(--accent);
+  background: rgba(52, 211, 153, 0.14);
+  color: var(--ink-accent);
   font-size: 0.75rem;
   font-weight: 700;
 }
@@ -429,32 +515,36 @@ main {
 
 .btn-primary:hover {
   background: var(--accent-strong);
+  color: #ffffff;
 }
 
 .btn-secondary {
-  background: transparent;
+  background: var(--surface);
   color: var(--text);
-  border: 1px solid var(--hairline-strong);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--ring-card);
 }
 
 .btn-secondary:hover {
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--accent-strong);
 }
 
 /* ---------- tiles / cards / labels ---------- */
 
 .section-tile {
   padding: var(--space-3);
-  background: var(--panel);
-  border: 1px solid var(--hairline);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
+  box-shadow: var(--ring-card);
 }
 
 .section-heading {
   margin-top: 0;
   margin-bottom: var(--space-2);
   letter-spacing: -0.01em;
+  font-weight: 700;
   color: var(--text);
 }
 
@@ -472,11 +562,15 @@ main {
   margin: var(--space-2) 0;
 }
 
+.cds--tag {
+  border-radius: 6px;
+}
+
 .flow-block {
   white-space: pre-wrap;
   line-height: 1.7;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.8125rem;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.875rem;
   color: var(--muted);
   overflow-x: auto;
 }
@@ -488,25 +582,31 @@ main {
 }
 
 .detail-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  font-weight: 600;
   color: var(--subtle);
 }
 
-/* ---------- footer (compact) ---------- */
+/* ---------- footer (compact, light) ---------- */
 
 .site-footer {
-  background: var(--elevated);
+  background: var(--surface);
   color: var(--muted);
-  border-top: 1px solid var(--hairline);
+  border-top: 1px solid var(--border);
 }
 
 .site-footer-inner {
   max-width: 80rem;
   margin: 0 auto;
-  padding: var(--space-4) 1.5rem var(--space-2);
+  padding: 3rem 1.5rem;
+}
+
+@media (min-width: 641px) {
+  .site-footer-inner {
+    padding: 3rem 2.5rem;
+  }
 }
 
 .site-footer-grid {
@@ -517,9 +617,8 @@ main {
 
 .site-footer-brand {
   margin: 0 0 0.5rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.9375rem;
+  font-weight: 700;
   color: var(--text);
 }
 
@@ -534,11 +633,10 @@ main {
 .site-footer-label {
   margin: 0 0 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  font-size: 0.8125rem;
   color: var(--subtle);
   font-weight: 600;
-  font-family: 'IBM Plex Mono', monospace;
 }
 
 .site-footer-list {
@@ -560,16 +658,16 @@ main {
 }
 
 .site-footer-link:hover {
-  color: var(--accent);
+  color: var(--accent-strong);
   text-decoration: underline;
 }
 
 .site-footer-legal {
   margin-top: 1.75rem;
   padding-top: 1.1rem;
-  border-top: 1px solid var(--hairline);
+  border-top: 1px solid var(--border);
   color: var(--subtle);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
 }
 
 @media (min-width: 641px) and (max-width: 900px) {
@@ -595,28 +693,18 @@ main {
     gap: 1.25rem;
   }
 
-  .site-footer-inner {
-    padding: var(--space-3) 1.25rem var(--space-2);
-  }
-
   .site-footer-list {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.5rem 1.25rem;
+    gap: 0.75rem 1.25rem;
+  }
+
+  .site-footer-link {
+    min-height: 44px;
   }
 
   .site-footer-copy {
     font-size: 0.8125rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .page-grid {
-    padding: var(--space-3) 1rem var(--space-4);
-  }
-
-  .page-subtitle {
-    max-width: 100%;
   }
 }
 
@@ -629,10 +717,11 @@ main {
 }
 
 .security-banner {
-  border: 1px solid var(--hairline);
+  border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
   border-radius: var(--radius);
-  background: var(--panel);
+  background: var(--surface);
+  box-shadow: var(--ring-card);
   padding: 1rem 1.25rem;
   display: flex;
   align-items: flex-start;
@@ -641,7 +730,7 @@ main {
 
 .security-banner-icon {
   flex: 0 0 auto;
-  color: var(--accent);
+  color: var(--accent-strong);
   margin-top: 0.15rem;
 }
 
@@ -649,7 +738,7 @@ main {
   margin: 0 0 0.25rem;
   color: var(--text);
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.35;
 }
 
@@ -662,10 +751,11 @@ main {
 }
 
 .quick-card {
-  border: 1px solid var(--hairline);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.25rem;
-  background: var(--panel);
+  background: var(--surface);
+  box-shadow: var(--shadow-elevated);
 }
 
 /* Desktop/tablet: vertical rail with dots. Rebuilt per step at <=767px below. */
@@ -673,7 +763,7 @@ main {
   position: relative;
   margin-left: 0.75rem;
   padding-left: 1.5rem;
-  border-left: 2px solid var(--hairline-strong);
+  border-left: 2px solid var(--border-strong);
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -692,8 +782,7 @@ main {
   height: 1.5rem;
   border-radius: 50%;
   background: var(--accent);
-  color: var(--accent-ink);
-  font-family: 'IBM Plex Mono', monospace;
+  color: #ffffff;
   font-size: 0.75rem;
   display: flex;
   align-items: center;
@@ -702,9 +791,10 @@ main {
 }
 
 .step-card {
-  border: 1px solid var(--hairline);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--panel);
+  background: var(--surface);
+  box-shadow: var(--ring-card);
   padding: 1.25rem;
   min-width: 0;
 }
@@ -716,10 +806,10 @@ main {
 }
 
 .tip-box {
-  border: 1px solid var(--hairline);
+  border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
   border-radius: var(--radius-sm);
-  background: var(--panel-hover);
+  background: var(--accent-dim);
   padding: 0.85rem 1rem;
   display: flex;
   align-items: flex-start;
@@ -727,10 +817,10 @@ main {
 }
 
 .warn-box {
-  border: 1px solid var(--hairline);
+  border: 1px solid var(--border);
   border-left: 3px solid var(--danger);
   border-radius: var(--radius-sm);
-  background: var(--panel-hover);
+  background: #fef2f2;
   padding: 0.85rem 1rem;
   display: flex;
   align-items: flex-start;
@@ -746,7 +836,7 @@ main {
 .box-icon {
   flex-shrink: 0;
   margin-top: 0.15rem;
-  color: var(--accent);
+  color: var(--accent-strong);
 }
 
 .warn-box .box-icon {
@@ -771,7 +861,7 @@ main {
 .system-card,
 .step-card,
 .quick-card {
-  box-shadow: none;
+  box-shadow: var(--ring-card);
 }
 
 /* Mobile: no rail, no negative offsets, full-width stacked cards.
@@ -809,9 +899,10 @@ main {
 }
 
 .systems-card {
-  background: var(--panel);
-  border: 1px solid var(--hairline);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
+  box-shadow: var(--ring-card);
   min-height: 240px;
   padding: 1.5rem;
   display: flex;
@@ -822,6 +913,7 @@ main {
 
 .systems-card:hover {
   border-color: var(--accent);
+  box-shadow: var(--shadow-elevated);
   transform: translateY(-2px);
 }
 
@@ -830,6 +922,7 @@ main {
   font-size: 1.1rem;
   line-height: 1.35;
   letter-spacing: -0.01em;
+  font-weight: 700;
   color: var(--text);
 }
 
@@ -845,7 +938,7 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  border-top: 1px solid var(--hairline);
+  border-top: 1px solid var(--border);
   padding-top: 0.85rem;
 }
 
@@ -853,19 +946,20 @@ main {
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.01em;
-  color: var(--accent);
+  color: var(--accent-strong);
   text-decoration: none;
 }
 
 .systems-card-link:hover {
-  color: var(--accent-strong);
+  color: var(--accent);
   text-decoration: underline;
 }
 
 .systems-card--feature {
   min-height: 300px;
-  background: var(--panel-hover);
-  border-color: var(--hairline-strong);
+  background: var(--surface);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-elevated);
 }
 
 @media (min-width: 768px) {
@@ -902,23 +996,25 @@ main {
   flex: 1 1 auto;
   position: relative;
   padding: 1.5rem;
-  background: var(--panel);
-  border: 1px solid var(--hairline);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
+  box-shadow: var(--ring-card);
 }
 
 .arch-stage-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--accent);
+  font-weight: 600;
+  color: var(--accent-strong);
   margin: 0 0 0.5rem;
 }
 
 .arch-stage-title {
   margin: 0 0 0.4rem;
   font-size: 1.05rem;
+  font-weight: 700;
   color: var(--text);
 }
 
@@ -957,9 +1053,10 @@ main {
 }
 
 .platform-band {
-  background: var(--panel);
-  border: 1px solid var(--hairline);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
+  box-shadow: var(--ring-card);
   padding: 1.5rem;
 }
 
@@ -973,18 +1070,17 @@ main {
   display: inline-flex;
   align-items: center;
   padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.8125rem;
-  font-family: 'IBM Plex Mono', monospace;
-  background: var(--panel-hover);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: var(--bg);
   color: var(--muted);
-  border: 1px solid var(--hairline);
+  border: 1px solid var(--border);
 }
 
 .chip--accent {
-  background: rgba(34, 211, 197, 0.12);
+  background: var(--accent-dim);
   color: var(--accent-strong);
-  border-color: rgba(34, 211, 197, 0.35);
+  border-color: rgba(5, 150, 105, 0.3);
 }
 
 .node-grid {
@@ -1034,9 +1130,10 @@ main {
 }
 
 .my-lab-card {
-  border: 1px solid var(--hairline);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--panel);
+  background: var(--surface);
+  box-shadow: var(--ring-card);
   padding: 1.1rem 1.25rem;
 }
 
@@ -1044,14 +1141,14 @@ main {
   margin: 0 0 0.6rem;
   font-size: 1rem;
   color: var(--text);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .my-lab-card-row {
   display: flex;
   gap: 0.75rem;
   padding: 0.4rem 0;
-  border-top: 1px solid var(--hairline);
+  border-top: 1px solid var(--border);
   font-size: 0.875rem;
 }
 
@@ -1062,10 +1159,10 @@ main {
 .my-lab-card-row dt {
   flex: 0 0 6rem;
   color: var(--subtle);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
   padding-top: 0.1rem;
 }
 
@@ -1085,10 +1182,10 @@ main {
 }
 
 .not-found code {
-  font-family: 'IBM Plex Mono', monospace;
-  background: var(--panel);
-  border: 1px solid var(--hairline);
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  background: var(--bg);
+  border: 1px solid var(--border);
   padding: 0.1rem 0.4rem;
   border-radius: 4px;
-  color: var(--accent);
+  color: var(--accent-strong);
 }
